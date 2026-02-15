@@ -438,8 +438,7 @@ function generateCertificate() {
 const videoSources = {
     2: [
         '../course/פרק 2 - השוואה בין כלי טקסט ביצירת תמונות',
-        '../course/פרק 3- המודל המטורף של גוגל ננו בננה וסודות נוספים..!.mp4',
-        '../course/לאונרדו סימן שאלה.mp4'
+        '../course/פרק 3- המודל המטורף של גוגל ננו בננה וסודות נוספים..!.mp4'
     ],
     4: [
         '../course/סונו חלק 1.mp4',
@@ -449,7 +448,7 @@ const videoSources = {
 
 // Subtitle mapping for multi-video modules
 const subtitleSources = {
-    2: ['subtitles/module-2-1.vtt', 'subtitles/module-2-2.vtt', 'subtitles/module-2-3.vtt'],
+    2: ['subtitles/module-2-1.vtt', 'subtitles/module-2-2.vtt'],
     4: ['subtitles/module-4-1.vtt', 'subtitles/module-4-2.vtt']
 };
 
