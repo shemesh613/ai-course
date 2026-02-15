@@ -2,6 +2,138 @@
 
 const TOTAL_MODULES = 7;
 const STORAGE_KEY = 'ai_course_progress';
+const THEME_KEY = 'ai_course_theme';
+
+// ===== Confetti Animation =====
+function launchConfetti() {
+    const canvas = document.createElement('canvas');
+    canvas.id = 'confetti-canvas';
+    canvas.style.cssText = 'position:fixed;top:0;left:0;width:100%;height:100%;pointer-events:none;z-index:9999';
+    document.body.appendChild(canvas);
+    const ctx = canvas.getContext('2d');
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+
+    const colors = ['#6C5CE7', '#00D2D3', '#00B894', '#FDCB6E', '#FD79A8', '#E17055', '#A29BFE'];
+    const pieces = [];
+    for (let i = 0; i < 150; i++) {
+        pieces.push({
+            x: Math.random() * canvas.width,
+            y: Math.random() * canvas.height - canvas.height,
+            w: Math.random() * 10 + 5,
+            h: Math.random() * 6 + 3,
+            color: colors[Math.floor(Math.random() * colors.length)],
+            vx: (Math.random() - 0.5) * 4,
+            vy: Math.random() * 3 + 2,
+            rot: Math.random() * 360,
+            rotSpeed: (Math.random() - 0.5) * 10
+        });
+    }
+
+    let frame = 0;
+    function animate() {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        let active = false;
+        pieces.forEach(p => {
+            if (p.y < canvas.height + 20) active = true;
+            p.x += p.vx;
+            p.y += p.vy;
+            p.vy += 0.05;
+            p.rot += p.rotSpeed;
+            ctx.save();
+            ctx.translate(p.x, p.y);
+            ctx.rotate((p.rot * Math.PI) / 180);
+            ctx.fillStyle = p.color;
+            ctx.globalAlpha = Math.max(0, 1 - frame / 180);
+            ctx.fillRect(-p.w / 2, -p.h / 2, p.w, p.h);
+            ctx.restore();
+        });
+        frame++;
+        if (active && frame < 200) {
+            requestAnimationFrame(animate);
+        } else {
+            canvas.remove();
+        }
+    }
+    animate();
+}
+
+// ===== Dark/Light Mode =====
+function initTheme() {
+    const saved = localStorage.getItem(THEME_KEY);
+    if (saved === 'light') {
+        document.body.classList.add('light-mode');
+    }
+    updateThemeIcon();
+}
+
+function toggleTheme() {
+    document.body.classList.toggle('light-mode');
+    const isLight = document.body.classList.contains('light-mode');
+    localStorage.setItem(THEME_KEY, isLight ? 'light' : 'dark');
+    updateThemeIcon();
+}
+
+function updateThemeIcon() {
+    const btn = document.getElementById('themeToggle');
+    if (!btn) return;
+    const isLight = document.body.classList.contains('light-mode');
+    btn.textContent = isLight ? '🌙' : '☀️';
+    btn.setAttribute('aria-label', isLight ? 'מצב כהה' : 'מצב בהיר');
+}
+
+// ===== Back to Top =====
+function initBackToTop() {
+    const btn = document.getElementById('backToTop');
+    if (!btn) return;
+    window.addEventListener('scroll', () => {
+        btn.classList.toggle('visible', window.scrollY > 400);
+    });
+    btn.addEventListener('click', () => {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+}
+
+// ===== Scroll Reveal Animation =====
+function initScrollReveal() {
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('revealed');
+                observer.unobserve(entry.target);
+            }
+        });
+    }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+
+    document.querySelectorAll('.module-card, .certificate-card, .a11y-card, .hero-content, .stat').forEach(el => {
+        el.classList.add('reveal-on-scroll');
+        observer.observe(el);
+    });
+}
+
+// ===== Share Buttons =====
+function shareWhatsApp() {
+    const url = encodeURIComponent(window.location.href);
+    const text = encodeURIComponent('קורס AI למדיה מקצועית - חינם! 🎓');
+    window.open(`https://wa.me/?text=${text}%20${url}`, '_blank');
+}
+
+function shareFacebook() {
+    const url = encodeURIComponent(window.location.href);
+    window.open(`https://www.facebook.com/sharer/sharer.php?u=${url}`, '_blank');
+}
+
+function copyLink() {
+    navigator.clipboard.writeText(window.location.href).then(() => {
+        const btn = document.querySelector('.share-btn.copy');
+        if (btn) {
+            const orig = btn.textContent;
+            btn.textContent = '✓ הועתק!';
+            btn.classList.add('copied');
+            setTimeout(() => { btn.textContent = orig; btn.classList.remove('copied'); }, 2000);
+        }
+    });
+}
 
 // Load progress from localStorage
 function loadProgress() {
@@ -14,12 +146,22 @@ function saveProgress(progress) {
     localStorage.setItem(STORAGE_KEY, JSON.stringify(progress));
 }
 
-// Toggle module completion
+// Toggle module completion with celebration
 function toggleComplete(moduleId) {
     const progress = loadProgress();
+    const wasComplete = progress[moduleId];
     progress[moduleId] = !progress[moduleId];
     saveProgress(progress);
     updateUI();
+
+    // Celebrate on completion
+    if (!wasComplete && progress[moduleId]) {
+        const btn = document.getElementById(`btn-${moduleId}`);
+        if (btn) {
+            btn.classList.add('celebrate');
+            setTimeout(() => btn.classList.remove('celebrate'), 600);
+        }
+    }
 }
 
 // Toggle module expand/collapse
@@ -281,10 +423,15 @@ function generateCertificate() {
     </body>
     </html>`;
 
-    // Open certificate in new window
-    const certWindow = window.open('', '_blank');
-    certWindow.document.write(certHTML);
-    certWindow.document.close();
+    // Launch confetti!
+    launchConfetti();
+
+    // Open certificate in new window after brief delay
+    setTimeout(() => {
+        const certWindow = window.open('', '_blank');
+        certWindow.document.write(certHTML);
+        certWindow.document.close();
+    }, 500);
 }
 
 // Video source mapping for modules with multiple videos
@@ -319,7 +466,19 @@ function switchVideo(moduleId, videoIndex, btn) {
 
 // Initialize on page load
 document.addEventListener('DOMContentLoaded', () => {
+    initTheme();
     updateUI();
+    initBackToTop();
+    initScrollReveal();
+
+    // Remove loading screen
+    const loader = document.getElementById('pageLoader');
+    if (loader) {
+        setTimeout(() => {
+            loader.classList.add('fade-out');
+            setTimeout(() => loader.remove(), 500);
+        }, 300);
+    }
 
     // Smooth scroll for anchor links
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {

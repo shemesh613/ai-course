@@ -5,11 +5,28 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>קורס AI למדיה | שמשון ג'ייקוב</title>
     <meta name="description" content="קורס דיגיטלי ליצירת מדיה מקצועית עם בינה מלאכותית - תמונות, סרטונים, מוזיקה, קריינות ותוכן">
+    <!-- Open Graph -->
+    <meta property="og:title" content="קורס AI למדיה מקצועית | שמשון ג'ייקוב">
+    <meta property="og:description" content="7 מודולים מעשיים: תמונות, סרטונים, מוזיקה, קריינות ותוכן — הכל עם AI. כולל תעודת סיום!">
+    <meta property="og:image" content="https://shemesh613.github.io/ai-course/assets/images/og-image.jpg">
+    <meta property="og:url" content="https://shemesh613.github.io/ai-course/">
+    <meta property="og:type" content="website">
+    <meta property="og:locale" content="he_IL">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="קורס AI למדיה מקצועית | שמשון ג'ייקוב">
+    <meta name="twitter:description" content="7 מודולים מעשיים עם סרטונים, תרגילים ותעודת סיום">
+    <meta name="twitter:image" content="https://shemesh613.github.io/ai-course/assets/images/og-image.jpg">
     <link rel="stylesheet" href="css/style.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
 </head>
 <body>
+    <!-- Loading Screen -->
+    <div class="page-loader" id="pageLoader">
+        <div class="loader-spinner"></div>
+        <span class="loader-text">טוען את הקורס...</span>
+    </div>
+
     <!-- Skip to content - Accessibility -->
     <a href="#modules" class="skip-link">דלג לתוכן הראשי</a>
 
@@ -20,9 +37,12 @@
                 <div class="logo">
                     <img src="assets/images/logo.jpeg" alt="AI למדיה" class="logo-img">
                 </div>
-                <div class="progress-badge">
-                    <span class="progress-text">התקדמות</span>
-                    <span class="progress-percent" id="totalProgress">0%</span>
+                <div style="display:flex;align-items:center;gap:12px;">
+                    <button class="theme-toggle" id="themeToggle" onclick="toggleTheme()" aria-label="החלף מצב תצוגה">☀️</button>
+                    <div class="progress-badge">
+                        <span class="progress-text">התקדמות</span>
+                        <span class="progress-percent" id="totalProgress">0%</span>
+                    </div>
                 </div>
             </div>
         </div>
@@ -54,6 +74,11 @@
                     </div>
                 </div>
                 <a href="#modules" class="btn-primary">התחל ללמוד</a>
+                <div class="share-buttons">
+                    <button class="share-btn whatsapp" onclick="shareWhatsApp()">📱 שתף בוואטסאפ</button>
+                    <button class="share-btn facebook" onclick="shareFacebook()">👍 שתף בפייסבוק</button>
+                    <button class="share-btn copy" onclick="copyLink()">🔗 העתק קישור</button>
+                </div>
             </div>
         </div>
     </section>
@@ -493,6 +518,9 @@
             </div>
         </div>
     </footer>
+
+    <!-- Back to Top Button -->
+    <button class="back-to-top" id="backToTop" aria-label="חזור למעלה">▲</button>
 
     <script src="js/app.js"></script>
 </body>
