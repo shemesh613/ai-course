@@ -105,7 +105,7 @@ function initScrollReveal() {
         });
     }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
 
-    document.querySelectorAll('.module-card, .certificate-card, .a11y-card, .hero-content, .stat, .feature-item').forEach(el => {
+    document.querySelectorAll('.module-card, .certificate-card, .a11y-card, .hero-content, .stat, .feature-item, .instructor-card').forEach(el => {
         el.classList.add('reveal-on-scroll');
         observer.observe(el);
     });
