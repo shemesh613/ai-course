@@ -447,6 +447,12 @@ const videoSources = {
     ]
 };
 
+// Subtitle mapping for multi-video modules
+const subtitleSources = {
+    2: ['subtitles/module-2-1.vtt', 'subtitles/module-2-2.vtt', 'subtitles/module-2-3.vtt'],
+    4: ['subtitles/module-4-1.vtt', 'subtitles/module-4-2.vtt']
+};
+
 // Switch video in a module with multiple videos
 function switchVideo(moduleId, videoIndex, btn) {
     const player = document.getElementById(`video-player-${moduleId}`);
@@ -456,6 +462,16 @@ function switchVideo(moduleId, videoIndex, btn) {
     if (!sources || !sources[videoIndex]) return;
 
     player.src = sources[videoIndex];
+
+    // Update subtitle track
+    const subs = subtitleSources[moduleId];
+    if (subs && subs[videoIndex]) {
+        const track = player.querySelector('track');
+        if (track) {
+            track.src = subs[videoIndex];
+        }
+    }
+
     player.load();
 
     // Update active tab
