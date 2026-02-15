@@ -1,0 +1,499 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>קורס AI למדיה | שמשון ג'ייקוב</title>
+    <meta name="description" content="קורס דיגיטלי ליצירת מדיה מקצועית עם בינה מלאכותית - תמונות, סרטונים, מוזיקה, קריינות ותוכן">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Skip to content - Accessibility -->
+    <a href="#modules" class="skip-link">דלג לתוכן הראשי</a>
+
+    <!-- Header -->
+    <header class="header" role="banner">
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">
+                    <img src="assets/images/logo.jpeg" alt="AI למדיה" class="logo-img">
+                </div>
+                <div class="progress-badge">
+                    <span class="progress-text">התקדמות</span>
+                    <span class="progress-percent" id="totalProgress">0%</span>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" role="region" aria-label="מידע כללי על הקורס">
+        <div class="container">
+            <div class="hero-content">
+                <div class="hero-badge">קורס דיגיטלי 2026</div>
+                <h1>יצירת מדיה מקצועית<br>עם בינה מלאכותית</h1>
+                <p class="hero-subtitle">תמונות, סרטונים, מוזיקה, קריינות ותוכן — הכל עם AI.<br>מה שפעם דרש צוות שלם, היום אפשר לעשות לבד.</p>
+                <div class="hero-stats">
+                    <div class="stat">
+                        <span class="stat-number">7</span>
+                        <span class="stat-label">מודולים</span>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-number">5+</span>
+                        <span class="stat-label">שעות תוכן</span>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-number">7</span>
+                        <span class="stat-label">תרגילים</span>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-number">🎓</span>
+                        <span class="stat-label">תעודת סיום</span>
+                    </div>
+                </div>
+                <a href="#modules" class="btn-primary">התחל ללמוד</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Progress Bar -->
+    <section class="progress-section" role="region" aria-label="התקדמות בקורס">
+        <div class="container">
+            <div class="progress-bar-wrapper" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" aria-label="אחוז השלמת הקורס">
+                <div class="progress-bar" id="progressBar" style="width: 0%"></div>
+            </div>
+            <div class="progress-info">
+                <span id="completedModules">0</span> מתוך 7 מודולים הושלמו
+            </div>
+        </div>
+    </section>
+
+    <!-- Modules Section -->
+    <main class="modules-section" id="modules" role="main">
+        <div class="container">
+            <h2 class="section-title">מודולי הקורס</h2>
+
+            <!-- Module 1 -->
+            <div class="module-card" data-module="1">
+                <div class="module-header" onclick="toggleModule(1)" role="button" tabindex="0" aria-expanded="false" aria-controls="content-1" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();toggleModule(1)}">
+                    <div class="module-info">
+                        <span class="module-number">01</span>
+                        <div class="module-meta">
+                            <h3>יסודות AI ופרומפט אנג'ינירינג</h3>
+                            <span class="module-duration">45-60 דקות</span>
+                            <span class="module-tag new">חדש</span>
+                        </div>
+                    </div>
+                    <div class="module-status">
+                        <button class="btn-complete" onclick="event.stopPropagation(); toggleComplete(1)" id="btn-1" aria-label="סמן מודול 1 כהושלם">
+                            <span class="check-icon" id="check-1">○</span>
+                        </button>
+                        <span class="expand-icon" id="expand-1">▼</span>
+                    </div>
+                </div>
+                <div class="module-content" id="content-1">
+                    <div class="module-description">
+                        <p>בסיס חזק לכל שימוש ב-AI. נלמד מה זה בינה מלאכותית, איך לכתוב פרומפטים אפקטיביים, ואיך לבחור את הכלי הנכון למשימה.</p>
+                    </div>
+                    <div class="lessons-list">
+                        <div class="lesson">
+                            <span class="lesson-icon">📹</span>
+                            <span class="lesson-title">מה זה AI ולמה זה חשוב ב-2026</span>
+                            <span class="lesson-time">10 דק'</span>
+                        </div>
+                        <div class="lesson">
+                            <span class="lesson-icon">📹</span>
+                            <span class="lesson-title">פרומפט אנג'ינירינג - 5 עקרונות</span>
+                            <span class="lesson-time">20 דק'</span>
+                        </div>
+                        <div class="lesson">
+                            <span class="lesson-icon">📹</span>
+                            <span class="lesson-title">איך לבחור את הכלי הנכון</span>
+                            <span class="lesson-time">10 דק'</span>
+                        </div>
+                    </div>
+                    <div class="video-container" id="video-1">
+                        <video controls preload="metadata" aria-label="שיעור וידאו - יסודות AI ופרומפט אנג'ינירינג">
+                            <source src="../course/פרק 1 - פתיחה" type="video/mp4">
+                            הדפדפן שלך לא תומך בנגן וידאו. <a href="../course/פרק 1 - פתיחה">לחץ כאן להורדה</a>
+                        </video>
+                    </div>
+                    <div class="module-resources">
+                        <a href="downloads/module-1-exercise.pdf" class="resource-link" download>
+                            <span>📝</span> תרגיל: כתוב 5 פרומפטים והשווה תוצאות
+                        </a>
+                        <a href="downloads/module-1-slides.pdf" class="resource-link" download>
+                            <span>📊</span> מצגת השיעור (PDF)
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Module 2 -->
+            <div class="module-card" data-module="2">
+                <div class="module-header" onclick="toggleModule(2)" role="button" tabindex="0" aria-expanded="false" aria-controls="content-2" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();toggleModule(2)}">
+                    <div class="module-info">
+                        <span class="module-number">02</span>
+                        <div class="module-meta">
+                            <h3>יצירת תמונות עם AI</h3>
+                            <span class="module-duration">60-90 דקות</span>
+                        </div>
+                    </div>
+                    <div class="module-status">
+                        <button class="btn-complete" onclick="event.stopPropagation(); toggleComplete(2)" id="btn-2" aria-label="סמן מודול 2 כהושלם">
+                            <span class="check-icon" id="check-2">○</span>
+                        </button>
+                        <span class="expand-icon" id="expand-2">▼</span>
+                    </div>
+                </div>
+                <div class="module-content" id="content-2">
+                    <div class="module-description">
+                        <p>נלמד ליצור תמונות מקצועיות עם ChatGPT, Gemini, Grok ו-Leonardo AI. השוואה בין כלים, עריכת תמונות, ושימושים מעשיים.</p>
+                    </div>
+                    <div class="lessons-list">
+                        <div class="lesson">
+                            <span class="lesson-icon">📹</span>
+                            <span class="lesson-title">השוואה בין כלי טקסט ביצירת תמונות</span>
+                            <span class="lesson-time">10 דק'</span>
+                        </div>
+                        <div class="lesson">
+                            <span class="lesson-icon">📹</span>
+                            <span class="lesson-title">Google Studio AI - ננו בננה וסודות נוספים</span>
+                            <span class="lesson-time">7.5 דק'</span>
+                        </div>
+                        <div class="lesson">
+                            <span class="lesson-icon">📹</span>
+                            <span class="lesson-title">Leonardo AI - יכולות מתקדמות</span>
+                            <span class="lesson-time">10 דק'</span>
+                        </div>
+                    </div>
+                    <div class="video-selector" id="video-selector-2">
+                        <button class="video-tab active" onclick="switchVideo(2, 0, this)" aria-label="שיעור 1">שיעור 1: השוואה</button>
+                        <button class="video-tab" onclick="switchVideo(2, 1, this)" aria-label="שיעור 2">שיעור 2: ננו בננה</button>
+                        <button class="video-tab" onclick="switchVideo(2, 2, this)" aria-label="שיעור 3">שיעור 3: Leonardo</button>
+                    </div>
+                    <div class="video-container" id="video-2">
+                        <video controls preload="metadata" id="video-player-2" aria-label="שיעור וידאו - יצירת תמונות עם AI">
+                            <source src="../course/פרק 2 - השוואה בין כלי טקסט ביצירת תמונות" type="video/mp4">
+                            הדפדפן שלך לא תומך בנגן וידאו.
+                        </video>
+                    </div>
+                    <div class="module-resources">
+                        <a href="downloads/module-2-exercise.pdf" class="resource-link" download>
+                            <span>📝</span> תרגיל: צור 3 תמונות לקמפיין פרסומי
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Module 3 -->
+            <div class="module-card" data-module="3">
+                <div class="module-header" onclick="toggleModule(3)" role="button" tabindex="0" aria-expanded="false" aria-controls="content-3" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();toggleModule(3)}">
+                    <div class="module-info">
+                        <span class="module-number">03</span>
+                        <div class="module-meta">
+                            <h3>יצירת וידאו עם AI</h3>
+                            <span class="module-duration">60-90 דקות</span>
+                            <span class="module-tag new">חדש</span>
+                        </div>
+                    </div>
+                    <div class="module-status">
+                        <button class="btn-complete" onclick="event.stopPropagation(); toggleComplete(3)" id="btn-3" aria-label="סמן מודול 3 כהושלם">
+                            <span class="check-icon" id="check-3">○</span>
+                        </button>
+                        <span class="expand-icon" id="expand-3">▼</span>
+                    </div>
+                </div>
+                <div class="module-content" id="content-3">
+                    <div class="module-description">
+                        <p>הנושא הכי חם ב-2026! נלמד ליצור סרטונים מקצועיים עם Runway, Kling, Sora ו-Veo. טקסט לוידאו, תמונה לוידאו, ועריכת וידאו חכמה.</p>
+                    </div>
+                    <div class="lessons-list">
+                        <div class="lesson">
+                            <span class="lesson-icon">📹</span>
+                            <span class="lesson-title">סקירת כלים ליצירת וידאו</span>
+                            <span class="lesson-time">15 דק'</span>
+                        </div>
+                        <div class="lesson">
+                            <span class="lesson-icon">📹</span>
+                            <span class="lesson-title">טקסט לוידאו + תמונה לוידאו</span>
+                            <span class="lesson-time">20 דק'</span>
+                        </div>
+                        <div class="lesson">
+                            <span class="lesson-icon">📹</span>
+                            <span class="lesson-title">עריכת וידאו עם AI</span>
+                            <span class="lesson-time">20 דק'</span>
+                        </div>
+                    </div>
+                    <div class="video-container" id="video-3">
+                        <div class="video-placeholder">
+                            <span class="play-icon">🎬</span>
+                            <p>תוכן בהכנה - בקרוב!</p>
+                        </div>
+                    </div>
+                    <div class="module-resources">
+                        <a href="downloads/module-3-exercise.pdf" class="resource-link" download>
+                            <span>📝</span> תרגיל: צור סרטון 30 שניות מתמונה
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Module 4 -->
+            <div class="module-card" data-module="4">
+                <div class="module-header" onclick="toggleModule(4)" role="button" tabindex="0" aria-expanded="false" aria-controls="content-4" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();toggleModule(4)}">
+                    <div class="module-info">
+                        <span class="module-number">04</span>
+                        <div class="module-meta">
+                            <h3>אודיו ומוזיקה עם AI</h3>
+                            <span class="module-duration">45-60 דקות</span>
+                        </div>
+                    </div>
+                    <div class="module-status">
+                        <button class="btn-complete" onclick="event.stopPropagation(); toggleComplete(4)" id="btn-4" aria-label="סמן מודול 4 כהושלם">
+                            <span class="check-icon" id="check-4">○</span>
+                        </button>
+                        <span class="expand-icon" id="expand-4">▼</span>
+                    </div>
+                </div>
+                <div class="module-content" id="content-4">
+                    <div class="module-description">
+                        <p>נלמד ליצור מוזיקה מקצועית עם Suno - שירים, קאברים, עריכה מתקדמת, פרסונה ועוד. כל הכלים במודול אחד מאוחד ומסודר.</p>
+                    </div>
+                    <div class="lessons-list">
+                        <div class="lesson">
+                            <span class="lesson-icon">📹</span>
+                            <span class="lesson-title">Suno - יצירת שירים, קאבר, הארכה, מהירות</span>
+                            <span class="lesson-time">25 דק'</span>
+                        </div>
+                        <div class="lesson">
+                            <span class="lesson-icon">📹</span>
+                            <span class="lesson-title">עורך מתקדם, פרסונה, הורדה ושיתוף</span>
+                            <span class="lesson-time">20 דק'</span>
+                        </div>
+                    </div>
+                    <div class="video-selector" id="video-selector-4">
+                        <button class="video-tab active" onclick="switchVideo(4, 0, this)" aria-label="סונו חלק 1">חלק 1: יצירת שירים</button>
+                        <button class="video-tab" onclick="switchVideo(4, 1, this)" aria-label="סונו חלק 2">חלק 2: עריכה מתקדמת</button>
+                    </div>
+                    <div class="video-container" id="video-4">
+                        <video controls preload="metadata" id="video-player-4" aria-label="שיעור וידאו - אודיו ומוזיקה עם AI">
+                            <source src="../course/סונו חלק 1.mp4" type="video/mp4">
+                            הדפדפן שלך לא תומך בנגן וידאו.
+                        </video>
+                    </div>
+                    <div class="module-resources">
+                        <a href="downloads/module-4-exercise.pdf" class="resource-link" download>
+                            <span>📝</span> תרגיל: צור שיר + קריינות לפרסומת
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Module 5 -->
+            <div class="module-card" data-module="5">
+                <div class="module-header" onclick="toggleModule(5)" role="button" tabindex="0" aria-expanded="false" aria-controls="content-5" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();toggleModule(5)}">
+                    <div class="module-info">
+                        <span class="module-number">05</span>
+                        <div class="module-meta">
+                            <h3>AI לטקסט ותוכן</h3>
+                            <span class="module-duration">60 דקות</span>
+                            <span class="module-tag new">חדש</span>
+                        </div>
+                    </div>
+                    <div class="module-status">
+                        <button class="btn-complete" onclick="event.stopPropagation(); toggleComplete(5)" id="btn-5" aria-label="סמן מודול 5 כהושלם">
+                            <span class="check-icon" id="check-5">○</span>
+                        </button>
+                        <span class="expand-icon" id="expand-5">▼</span>
+                    </div>
+                </div>
+                <div class="module-content" id="content-5">
+                    <div class="module-description">
+                        <p>השימוש הנפוץ ביותר ב-AI! נלמד לכתוב תוכן מקצועי עם ChatGPT, Claude ו-Gemini. סיכום מסמכים, תוכן שיווקי ומחקר עם NotebookLM.</p>
+                    </div>
+                    <div class="lessons-list">
+                        <div class="lesson">
+                            <span class="lesson-icon">📹</span>
+                            <span class="lesson-title">ChatGPT, Claude, Gemini - השוואה מעשית</span>
+                            <span class="lesson-time">20 דק'</span>
+                        </div>
+                        <div class="lesson">
+                            <span class="lesson-icon">📹</span>
+                            <span class="lesson-title">NotebookLM - פודקאסטים, סרטונים, מפות חשיבה</span>
+                            <span class="lesson-time">15 דק'</span>
+                        </div>
+                        <div class="lesson">
+                            <span class="lesson-icon">📹</span>
+                            <span class="lesson-title">תוכן שיווקי עם AI</span>
+                            <span class="lesson-time">20 דק'</span>
+                        </div>
+                    </div>
+                    <div class="video-container" id="video-5">
+                        <video controls preload="metadata" aria-label="שיעור וידאו - AI לטקסט ותוכן - NotebookLM">
+                            <source src="../course/Video Project 3 (1).mp4" type="video/mp4">
+                            הדפדפן שלך לא תומך בנגן וידאו.
+                        </video>
+                    </div>
+                    <div class="module-resources">
+                        <a href="downloads/module-5-exercise.pdf" class="resource-link" download>
+                            <span>📝</span> תרגיל: כתוב 5 פוסטים + מייל שיווקי
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Module 6 -->
+            <div class="module-card" data-module="6">
+                <div class="module-header" onclick="toggleModule(6)" role="button" tabindex="0" aria-expanded="false" aria-controls="content-6" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();toggleModule(6)}">
+                    <div class="module-info">
+                        <span class="module-number">06</span>
+                        <div class="module-meta">
+                            <h3>אוטומציות ושילובים</h3>
+                            <span class="module-duration">45-60 דקות</span>
+                        </div>
+                    </div>
+                    <div class="module-status">
+                        <button class="btn-complete" onclick="event.stopPropagation(); toggleComplete(6)" id="btn-6" aria-label="סמן מודול 6 כהושלם">
+                            <span class="check-icon" id="check-6">○</span>
+                        </button>
+                        <span class="expand-icon" id="expand-6">▼</span>
+                    </div>
+                </div>
+                <div class="module-content" id="content-6">
+                    <div class="module-description">
+                        <p>נלמד לחבר כלי AI יחד ולייצר תהליכי עבודה אוטומטיים עם Make.com. גוגל פורמס, מיילים, ושילוב כלים ביחד.</p>
+                    </div>
+                    <div class="lessons-list">
+                        <div class="lesson">
+                            <span class="lesson-icon">📹</span>
+                            <span class="lesson-title">Make.com - אוטומציות מעשיות</span>
+                            <span class="lesson-time">25 דק'</span>
+                        </div>
+                        <div class="lesson">
+                            <span class="lesson-icon">📹</span>
+                            <span class="lesson-title">שילוב כלים יחד</span>
+                            <span class="lesson-time">20 דק'</span>
+                        </div>
+                    </div>
+                    <div class="video-container" id="video-6">
+                        <video controls preload="metadata" aria-label="שיעור וידאו - אוטומציות ושילובים">
+                            <source src="../course/אוטומציות חלק 1.mp4" type="video/mp4">
+                            הדפדפן שלך לא תומך בנגן וידאו.
+                        </video>
+                    </div>
+                    <div class="module-resources">
+                        <a href="downloads/module-6-exercise.pdf" class="resource-link" download>
+                            <span>📝</span> תרגיל: בנה אוטומציה ב-Make.com
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Module 7 -->
+            <div class="module-card" data-module="7">
+                <div class="module-header" onclick="toggleModule(7)" role="button" tabindex="0" aria-expanded="false" aria-controls="content-7" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();toggleModule(7)}">
+                    <div class="module-info">
+                        <span class="module-number">07</span>
+                        <div class="module-meta">
+                            <h3>פרויקט מסכם</h3>
+                            <span class="module-duration">30-45 דקות</span>
+                            <span class="module-tag new">חדש</span>
+                        </div>
+                    </div>
+                    <div class="module-status">
+                        <button class="btn-complete" onclick="event.stopPropagation(); toggleComplete(7)" id="btn-7" aria-label="סמן מודול 7 כהושלם">
+                            <span class="check-icon" id="check-7">○</span>
+                        </button>
+                        <span class="expand-icon" id="expand-7">▼</span>
+                    </div>
+                </div>
+                <div class="module-content" id="content-7">
+                    <div class="module-description">
+                        <p>הזמן לשלב הכל! ניצור קמפיין שלם לעסק דמיוני - טקסט, תמונות, וידאו, אודיו ואוטומציה. פרויקט מעשי שמחבר את כל מה שלמדנו.</p>
+                    </div>
+                    <div class="lessons-list">
+                        <div class="lesson">
+                            <span class="lesson-icon">📹</span>
+                            <span class="lesson-title">יצירת קמפיין שלם עם AI</span>
+                            <span class="lesson-time">30 דק'</span>
+                        </div>
+                    </div>
+                    <div class="video-container" id="video-7">
+                        <div class="video-placeholder">
+                            <span class="play-icon">🎯</span>
+                            <p>תוכן בהכנה - בקרוב!</p>
+                        </div>
+                    </div>
+                    <div class="module-resources">
+                        <a href="downloads/module-7-project.pdf" class="resource-link" download>
+                            <span>🎯</span> פרויקט: צור קמפיין שלם לעסק
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Certificate Section -->
+    <section class="certificate-section" id="certificate">
+        <div class="container">
+            <div class="certificate-card">
+                <div class="certificate-icon">🎓</div>
+                <h2>תעודת סיום</h2>
+                <p>סיימת את כל 7 המודולים? קבל תעודת סיום מקצועית!</p>
+                <div class="certificate-form">
+                    <input type="text" id="studentName" placeholder="הכנס את שמך המלא" class="input-field">
+                    <button onclick="generateCertificate()" class="btn-primary" id="certBtn" disabled aria-describedby="certNote">
+                        הפק תעודה
+                    </button>
+                </div>
+                <p class="certificate-note" id="certNote">יש להשלים את כל המודולים לפני הפקת התעודה</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Accessibility Statement -->
+    <section class="a11y-section" id="accessibility" role="region" aria-label="הצהרת נגישות">
+        <div class="container">
+            <div class="a11y-card">
+                <h2>הצהרת נגישות</h2>
+                <p>אתר זה מונגש בהתאם לתקן הישראלי SI 5568 ולהנחיות WCAG 2.1 ברמה AA.</p>
+                <ul class="a11y-list">
+                    <li>ניווט מלא באמצעות מקלדת</li>
+                    <li>תמיכה בקוראי מסך (NVDA, JAWS, VoiceOver)</li>
+                    <li>ניגודיות צבעים תקנית</li>
+                    <li>טקסט חלופי לתמונות</li>
+                    <li>כותרות מסודרות היררכית</li>
+                    <li>שפה מוגדרת (עברית)</li>
+                    <li>תמיכה מלאה בכיוון RTL</li>
+                </ul>
+                <p class="a11y-contact">נתקלתם בבעיית נגישות? <a href="mailto:shimshon@example.com">צרו קשר</a> ונטפל בכך.</p>
+                <p class="a11y-date">עדכון אחרון: פברואר 2026</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer" role="contentinfo">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <img src="assets/images/logo.jpeg" alt="לוגו" class="footer-logo">
+                </div>
+                <div class="footer-links">
+                    <a href="https://shemesh613.github.io/shimshon-cv/" target="_blank" rel="noopener noreferrer">על המרצה</a>
+                    <a href="https://youtube.com/@shimshon" target="_blank" rel="noopener noreferrer">YouTube</a>
+                    <a href="#" target="_blank" rel="noopener noreferrer">קבוצת WhatsApp</a>
+                    <a href="#accessibility">הצהרת נגישות</a>
+                </div>
+                <p class="footer-copy">&copy; 2026 כל הזכויות שמורות</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/app.js"></script>
+</body>
+</html>
