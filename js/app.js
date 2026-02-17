@@ -752,16 +752,15 @@ function closeBitModal() {
 
 function copyBitPhone() {
     navigator.clipboard.writeText('0526953500').then(() => {
-        const btn = document.querySelector('.btn-copy-phone');
+        // Show confirmation message
+        const msg = document.getElementById('bitCopiedMsg');
+        if (msg) msg.style.display = 'block';
+
+        // Update button
+        const btn = document.querySelector('.bit-mobile-only .btn-bit-open');
         if (btn) {
-            btn.textContent = '✓ המספר הועתק!';
-            btn.style.borderColor = 'var(--success)';
-            btn.style.color = 'var(--success)';
-            setTimeout(() => {
-                btn.textContent = '📋 העתק מספר טלפון';
-                btn.style.borderColor = '';
-                btn.style.color = '';
-            }, 2500);
+            btn.textContent = '✅ הועתק! עברו ל-Bit';
+            btn.style.background = 'var(--success)';
         }
     });
 }
@@ -789,7 +788,7 @@ function generateBitQR() {
         ctx.font = '14px Heebo, sans-serif';
         ctx.fillText('₪197', 90, 110);
     };
-    img.src = 'https://api.qrserver.com/v1/create-qr-code/?size=180x180&data=' + encodeURIComponent('tel:0526953500') + '&margin=1';
+    img.src = 'https://api.qrserver.com/v1/create-qr-code/?size=180x180&data=' + encodeURIComponent('https://shemesh613.github.io/ai-course/#pricing') + '&margin=1';
 }
 
 // ===== Referral System =====

@@ -2347,6 +2347,31 @@ body.light-mode .video-container {
     margin-bottom: 16px;
 }
 
+.bit-or-divider {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin: 16px 0;
+    color: var(--text-muted);
+    font-size: 0.8rem;
+}
+
+.bit-or-divider::before,
+.bit-or-divider::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: var(--border);
+}
+
+.bit-copied-msg {
+    color: var(--success);
+    font-size: 0.9rem;
+    font-weight: 600;
+    margin-top: 12px;
+    animation: fadeIn 0.3s ease;
+}
+
 .bit-steps-mini {
     text-align: right;
     margin: 0 auto 20px;
@@ -2382,23 +2407,6 @@ body.light-mode .video-container {
     color: white;
 }
 
-.btn-copy-phone {
-    background: none;
-    border: 1px solid var(--border);
-    color: var(--text-muted);
-    padding: 8px 20px;
-    border-radius: 50px;
-    font-size: 0.85rem;
-    cursor: pointer;
-    transition: var(--transition);
-    font-family: 'Heebo', sans-serif;
-    margin-bottom: 16px;
-}
-
-.btn-copy-phone:hover {
-    border-color: var(--accent);
-    color: var(--accent);
-}
 
 .bit-note {
     font-size: 0.8rem;

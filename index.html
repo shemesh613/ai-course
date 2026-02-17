@@ -1259,7 +1259,7 @@
                     <span class="price-currency">₪</span>
                     <span class="price-number">197</span>
                 </div>
-                <p class="pricing-subtitle">תשלום חד-פעמי | גישה מלאה לכל החיים</p>
+                <p class="pricing-subtitle">תשלום חד-פעמי | גישה מלאה כל עוד הקורס באוויר</p>
                 <ul class="pricing-features">
                     <li>2 קורסים, 12 מודולים עם סרטוני וידאו</li>
                     <li>10 תרגולים מודרכים צעד-אחר-צעד</li>
@@ -1283,31 +1283,33 @@
                             <span class="bit-logo-big">💳</span>
                             <h3>תשלום ב-Bit</h3>
                             <div class="bit-amount">₪197</div>
-                            <p class="bit-desc">תשלום חד-פעמי | גישה מלאה לכל החיים</p>
+                            <p class="bit-desc">תשלום חד-פעמי | גישה מלאה כל עוד הקורס באוויר</p>
                         </div>
 
                         <!-- Desktop: QR Code -->
                         <div class="bit-desktop-only">
-                            <p class="bit-instruction">סרקו את הקוד עם אפליקציית Bit</p>
+                            <p class="bit-instruction">סרקו עם הטלפון → תגיעו לעמוד תשלום</p>
                             <div class="bit-qr-container">
                                 <canvas id="bitQrCanvas"></canvas>
                             </div>
-                            <p class="bit-phone-display">לטלפון: <strong dir="ltr">052-695-3500</strong></p>
+                            <div class="bit-or-divider"><span>או</span></div>
+                            <p class="bit-instruction">פתחו Bit והעבירו ידנית:</p>
+                            <p class="bit-phone-display">לטלפון: <strong dir="ltr">052-695-3500</strong> | סכום: <strong>₪197</strong></p>
                             <p class="bit-phone-name">שמשון ג'ייקוב</p>
                         </div>
 
-                        <!-- Mobile: Direct Button -->
+                        <!-- Mobile: Copy + Instructions -->
                         <div class="bit-mobile-only">
-                            <p class="bit-instruction">לחצו לפתיחת Bit והעבירו תשלום</p>
+                            <p class="bit-instruction">3 צעדים פשוטים:</p>
                             <div class="bit-steps-mini">
-                                <div class="bit-step-mini">1️⃣ לחצו על הכפתור למטה</div>
-                                <div class="bit-step-mini">2️⃣ חפשו: <strong dir="ltr">052-695-3500</strong></div>
-                                <div class="bit-step-mini">3️⃣ העבירו <strong>₪197</strong></div>
+                                <div class="bit-step-mini">1️⃣ העתיקו את המספר (כפתור למטה)</div>
+                                <div class="bit-step-mini">2️⃣ פתחו את אפליקציית <strong>Bit</strong> בטלפון</div>
+                                <div class="bit-step-mini">3️⃣ העבירו <strong>₪197</strong> ל-<strong dir="ltr">052-695-3500</strong></div>
                             </div>
-                            <a href="https://bitpay.co.il" class="btn-bit-open" onclick="copyBitPhone()">
-                                💳 פתח את Bit ושלם
-                            </a>
-                            <button class="btn-copy-phone" onclick="copyBitPhone()">📋 העתק מספר טלפון</button>
+                            <button class="btn-bit-open" onclick="copyBitPhone()">
+                                📋 העתק מספר ופתח Bit
+                            </button>
+                            <p class="bit-copied-msg" id="bitCopiedMsg" style="display:none">✅ המספר הועתק! פתחו את Bit והעבירו ₪197</p>
                         </div>
 
                         <p class="bit-note">אחרי התשלום שלחו אישור בוואטסאפ ותקבלו גישה מיידית</p>
