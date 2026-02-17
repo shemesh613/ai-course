@@ -484,9 +484,21 @@ function updateUI() {
     document.getElementById('progressBar').style.width = `${percent}%`;
     document.getElementById('totalProgress').textContent = `${percent}%`;
     document.getElementById('completedModules').textContent = completed;
+    const totalEl = document.getElementById('totalModulesCount');
+    if (totalEl) totalEl.textContent = course.totalModules;
 
+    const completedEl = document.getElementById('completedModules');
+    if (completedEl) completedEl.textContent = completed;
     const progressInfo = document.querySelector('.progress-info');
-    if (progressInfo) progressInfo.innerHTML = `<span id="completedModules">${completed}</span> מתוך ${course.totalModules} מודולים הושלמו`;
+    if (progressInfo) {
+        const textNode = progressInfo.firstChild;
+        if (textNode && textNode.nodeType === 3) {
+            // Update only the text, preserve streak badge
+        }
+        // Update "X מתוך Y" text without destroying streak badge
+        const spans = progressInfo.querySelectorAll(':scope > span:not(.streak-badge)');
+        if (spans[0]) spans[0].textContent = completed;
+    }
 
     const progressWrapper = document.querySelector('.progress-bar-wrapper');
     if (progressWrapper) progressWrapper.setAttribute('aria-valuenow', percent);
@@ -796,10 +808,18 @@ document.addEventListener('DOMContentLoaded', () => {
     updateUI();
     initBackToTop();
     initScrollReveal();
-    initPractices();
+    try { initPractices(); } catch(e) { console.warn('initPractices error:', e); }
     checkReferral();
     updateAchievementsPanel();
     checkAchievements();
+
+    // Course tabs - backup event listeners
+    document.querySelectorAll('.course-tab').forEach(tab => {
+        tab.addEventListener('click', function() {
+            const courseId = this.id.replace('tab-', '');
+            switchCourse(courseId);
+        });
+    });
 
     // Achievements panel toggle
     const toggle = document.getElementById('achievementsToggle');
@@ -824,8 +844,10 @@ document.addEventListener('DOMContentLoaded', () => {
         }, 300);
     }
 
-    // Smooth scroll for anchor links
+    // Smooth scroll for anchor links (skip external payment links)
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        const href = anchor.getAttribute('href');
+        if (href === '#BIT_LINK' || href === '#PAYBOX_LINK') return;
         anchor.addEventListener('click', function(e) {
             e.preventDefault();
             const target = document.querySelector(this.getAttribute('href'));
