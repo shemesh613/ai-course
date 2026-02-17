@@ -1375,6 +1375,45 @@ body.light-mode .video-container {
     justify-content: center;
 }
 
+.btn-lemonsqueezy {
+    background: linear-gradient(135deg, var(--accent), var(--accent-dark, #4A90D9));
+    color: white;
+    font-size: 1.15rem;
+    padding: 18px 36px;
+    position: relative;
+    text-decoration: none;
+}
+
+.btn-lemonsqueezy:hover {
+    color: white;
+    transform: translateY(-2px);
+    box-shadow: 0 8px 24px rgba(99, 102, 241, 0.4);
+}
+
+.payment-badge {
+    font-size: 0.7rem;
+    background: rgba(255,255,255,0.2);
+    padding: 2px 8px;
+    border-radius: 20px;
+    margin-right: 4px;
+}
+
+.btn-paypal {
+    background: linear-gradient(135deg, #003087, #009cde);
+    color: white;
+    text-decoration: none;
+}
+
+.btn-paypal:hover {
+    color: white;
+    transform: translateY(-2px);
+    box-shadow: 0 8px 24px rgba(0, 48, 135, 0.4);
+}
+
+.btn-paypal svg {
+    fill: white;
+}
+
 .btn-bit {
     background: linear-gradient(135deg, #3CC4B1, #2BA89A);
     color: white;
@@ -1386,19 +1425,10 @@ body.light-mode .video-container {
     box-shadow: 0 8px 24px rgba(60, 196, 177, 0.4);
 }
 
-.btn-paybox {
-    background: linear-gradient(135deg, #4A90D9, #357ABD);
-    color: white;
-}
-
-.btn-paybox:hover {
-    color: white;
-    transform: translateY(-2px);
-    box-shadow: 0 8px 24px rgba(74, 144, 217, 0.4);
-}
-
 .payment-logo {
     font-size: 1.3rem;
+    display: inline-flex;
+    align-items: center;
 }
 
 .pricing-note {
@@ -2323,90 +2353,25 @@ body.light-mode .video-container {
     font-weight: 500;
 }
 
-.bit-qr-container {
-    display: inline-flex;
-    background: white;
-    padding: 16px;
+.bit-transfer-info {
+    background: var(--bg-card-hover);
     border-radius: var(--radius-sm);
-    margin-bottom: 16px;
-}
-
-.bit-qr-container canvas {
-    display: block;
+    padding: 20px;
+    margin-bottom: 20px;
 }
 
 .bit-phone-display {
-    font-size: 1.1rem;
-    color: var(--text);
+    font-size: 1.4rem;
+    color: var(--text-bright);
     margin-bottom: 4px;
+    letter-spacing: 1px;
 }
 
 .bit-phone-name {
-    font-size: 0.85rem;
-    color: var(--text-muted);
-    margin-bottom: 16px;
-}
-
-.bit-or-divider {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    margin: 16px 0;
-    color: var(--text-muted);
-    font-size: 0.8rem;
-}
-
-.bit-or-divider::before,
-.bit-or-divider::after {
-    content: '';
-    flex: 1;
-    height: 1px;
-    background: var(--border);
-}
-
-.bit-copied-msg {
-    color: var(--success);
     font-size: 0.9rem;
-    font-weight: 600;
-    margin-top: 12px;
-    animation: fadeIn 0.3s ease;
-}
-
-.bit-steps-mini {
-    text-align: right;
-    margin: 0 auto 20px;
-    max-width: 280px;
-}
-
-.bit-step-mini {
-    padding: 8px 0;
-    font-size: 0.9rem;
-    color: var(--text);
-    border-bottom: 1px solid var(--border);
-}
-
-.bit-step-mini:last-child {
-    border-bottom: none;
-}
-
-.btn-bit-open {
-    display: block;
-    background: linear-gradient(135deg, #3CC4B1, #2BA89A);
-    color: white;
-    padding: 16px 32px;
-    border-radius: 50px;
-    font-size: 1.1rem;
-    font-weight: 700;
+    color: var(--text-muted);
     margin-bottom: 12px;
-    transition: var(--transition);
 }
-
-.btn-bit-open:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 8px 24px rgba(60, 196, 177, 0.4);
-    color: white;
-}
-
 
 .bit-note {
     font-size: 0.8rem;
@@ -2431,14 +2396,10 @@ body.light-mode .video-container {
     transform: translateY(-2px);
 }
 
-/* Desktop/Mobile detection */
-.bit-desktop-only { display: block; }
-.bit-mobile-only { display: none; }
-
 @media (max-width: 768px) {
-    .bit-desktop-only { display: none; }
-    .bit-mobile-only { display: block; }
     .bit-modal { padding: 30px 24px; }
+    .payment-buttons-group { flex-direction: column; align-items: stretch; }
+    .btn-payment { min-width: auto; }
 }
 
 /* ===== Print ===== */

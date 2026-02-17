@@ -734,13 +734,12 @@ function initPractices() {
     });
 }
 
-// ===== Bit Payment System =====
+// ===== Bit Payment Modal =====
 function showBitPayment() {
     const modal = document.getElementById('bitModal');
     if (!modal) return;
     modal.classList.add('open');
     document.body.style.overflow = 'hidden';
-    generateBitQR();
 }
 
 function closeBitModal() {
@@ -748,47 +747,6 @@ function closeBitModal() {
     if (!modal) return;
     modal.classList.remove('open');
     document.body.style.overflow = '';
-}
-
-function copyBitPhone() {
-    navigator.clipboard.writeText('0526953500').then(() => {
-        // Show confirmation message
-        const msg = document.getElementById('bitCopiedMsg');
-        if (msg) msg.style.display = 'block';
-
-        // Update button
-        const btn = document.querySelector('.bit-mobile-only .btn-bit-open');
-        if (btn) {
-            btn.textContent = '✅ הועתק! עברו ל-Bit';
-            btn.style.background = 'var(--success)';
-        }
-    });
-}
-
-function generateBitQR() {
-    const canvas = document.getElementById('bitQrCanvas');
-    if (!canvas || canvas.dataset.drawn) return;
-    canvas.dataset.drawn = '1';
-    canvas.width = 180;
-    canvas.height = 180;
-    const ctx = canvas.getContext('2d');
-    const img = new Image();
-    img.crossOrigin = 'anonymous';
-    img.onload = function() {
-        ctx.drawImage(img, 0, 0, 180, 180);
-    };
-    img.onerror = function() {
-        // Fallback: show phone number in canvas
-        ctx.fillStyle = '#FFFFFF';
-        ctx.fillRect(0, 0, 180, 180);
-        ctx.fillStyle = '#333';
-        ctx.font = 'bold 18px Heebo, sans-serif';
-        ctx.textAlign = 'center';
-        ctx.fillText('052-695-3500', 90, 85);
-        ctx.font = '14px Heebo, sans-serif';
-        ctx.fillText('₪197', 90, 110);
-    };
-    img.src = 'https://api.qrserver.com/v1/create-qr-code/?size=180x180&data=' + encodeURIComponent('https://shemesh613.github.io/ai-course/#pricing') + '&margin=1';
 }
 
 // ===== Referral System =====

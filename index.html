@@ -18,6 +18,7 @@
     <meta name="twitter:image" content="https://shemesh613.github.io/ai-course/assets/images/og-image.jpg">
     <link rel="icon" type="image/jpeg" href="assets/images/logo.jpeg">
     <link rel="stylesheet" href="css/style.css">
+    <script src="https://app.lemonsqueezy.com/js/lemon.js" defer></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
 </head>
@@ -1268,12 +1269,26 @@
                     <li>עדכוני תוכן שוטפים</li>
                 </ul>
                 <div class="payment-buttons-group">
+                    <!-- Primary: Lemon Squeezy - secure checkout overlay -->
+                    <a class="btn-payment btn-lemonsqueezy lemonsqueezy-button" href="https://YOURSTORE.lemonsqueezy.com/checkout/buy/PRODUCT_ID">
+                        <span class="payment-logo">🛒</span>
+                        <span>רכישה מאובטחת</span>
+                        <span class="payment-badge">כרטיס אשראי</span>
+                    </a>
+                    <!-- PayPal -->
+                    <a class="btn-payment btn-paypal" href="https://www.paypal.com/paypalme/YOURUSERNAME/55USD" target="_blank" rel="noopener noreferrer">
+                        <span class="payment-logo">
+                            <svg viewBox="0 0 24 24" width="22" height="22" fill="currentColor"><path d="M7.076 21.337H2.47a.641.641 0 0 1-.633-.74L4.944 2.23A.773.773 0 0 1 5.708 1.6h6.265c2.08 0 3.523.462 4.287 1.374.357.427.567.898.636 1.422.073.556.013 1.222-.183 2.03l-.012.046v.405l.316.178a2.6 2.6 0 0 1 .642.47c.26.29.434.65.517 1.072.086.434.084.95-.005 1.533a5.9 5.9 0 0 1-.682 1.924 3.7 3.7 0 0 1-1.08 1.178c-.428.304-.936.52-1.514.645-.56.122-1.2.183-1.9.183H12.34a.96.96 0 0 0-.949.812l-.041.213-.647 4.1-.03.155a.96.96 0 0 1-.948.812H7.076z"/></svg>
+                        </span>
+                        <span>PayPal</span>
+                    </a>
+                    <!-- Bit (local transfer) -->
                     <button class="btn-payment btn-bit" onclick="showBitPayment()">
                         <span class="payment-logo">💳</span>
-                        <span>תשלום דרך Bit</span>
+                        <span>Bit העברה</span>
                     </button>
                 </div>
-                <p class="pricing-note">תשלום מאובטח ישירות דרך האפליקציה</p>
+                <p class="pricing-note">תשלום מאובטח | ללא מנוי חודשי</p>
 
                 <!-- Bit Payment Modal -->
                 <div class="bit-modal-overlay" id="bitModal" onclick="if(event.target===this)closeBitModal()">
@@ -1281,39 +1296,17 @@
                         <button class="bit-modal-close" onclick="closeBitModal()">&times;</button>
                         <div class="bit-modal-header">
                             <span class="bit-logo-big">💳</span>
-                            <h3>תשלום ב-Bit</h3>
+                            <h3>העברה ב-Bit</h3>
                             <div class="bit-amount">₪197</div>
-                            <p class="bit-desc">תשלום חד-פעמי | גישה מלאה כל עוד הקורס באוויר</p>
                         </div>
-
-                        <!-- Desktop: QR Code -->
-                        <div class="bit-desktop-only">
-                            <p class="bit-instruction">סרקו עם הטלפון → תגיעו לעמוד תשלום</p>
-                            <div class="bit-qr-container">
-                                <canvas id="bitQrCanvas"></canvas>
-                            </div>
-                            <div class="bit-or-divider"><span>או</span></div>
-                            <p class="bit-instruction">פתחו Bit והעבירו ידנית:</p>
-                            <p class="bit-phone-display">לטלפון: <strong dir="ltr">052-695-3500</strong> | סכום: <strong>₪197</strong></p>
+                        <div class="bit-transfer-info">
+                            <p class="bit-instruction">העבירו ב-Bit לטלפון:</p>
+                            <p class="bit-phone-display"><strong dir="ltr">052-695-3500</strong></p>
                             <p class="bit-phone-name">שמשון ג'ייקוב</p>
+                            <p class="bit-instruction">סכום: <strong>₪197</strong></p>
                         </div>
-
-                        <!-- Mobile: Copy + Instructions -->
-                        <div class="bit-mobile-only">
-                            <p class="bit-instruction">3 צעדים פשוטים:</p>
-                            <div class="bit-steps-mini">
-                                <div class="bit-step-mini">1️⃣ העתיקו את המספר (כפתור למטה)</div>
-                                <div class="bit-step-mini">2️⃣ פתחו את אפליקציית <strong>Bit</strong> בטלפון</div>
-                                <div class="bit-step-mini">3️⃣ העבירו <strong>₪197</strong> ל-<strong dir="ltr">052-695-3500</strong></div>
-                            </div>
-                            <button class="btn-bit-open" onclick="copyBitPhone()">
-                                📋 העתק מספר ופתח Bit
-                            </button>
-                            <p class="bit-copied-msg" id="bitCopiedMsg" style="display:none">✅ המספר הועתק! פתחו את Bit והעבירו ₪197</p>
-                        </div>
-
                         <p class="bit-note">אחרי התשלום שלחו אישור בוואטסאפ ותקבלו גישה מיידית</p>
-                        <a href="https://wa.me/972526953500?text=%D7%A9%D7%99%D7%9C%D7%9E%D7%AA%D7%99%20%D7%91-Bit%20%D7%A2%D7%9C%20%D7%94%D7%A7%D7%95%D7%A8%D7%A1" class="btn-whatsapp-confirm">💬 שלחתי! תנו לי גישה</a>
+                        <a href="https://wa.me/972526953500?text=%D7%A9%D7%99%D7%9C%D7%9E%D7%AA%D7%99%20%D7%91-Bit%20%D7%A2%D7%9C%20%D7%94%D7%A7%D7%95%D7%A8%D7%A1" class="btn-whatsapp-confirm" target="_blank" rel="noopener noreferrer">💬 שלחתי! תנו לי גישה</a>
                     </div>
                 </div>
             </div>
