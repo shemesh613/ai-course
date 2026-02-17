@@ -734,6 +734,64 @@ function initPractices() {
     });
 }
 
+// ===== Bit Payment System =====
+function showBitPayment() {
+    const modal = document.getElementById('bitModal');
+    if (!modal) return;
+    modal.classList.add('open');
+    document.body.style.overflow = 'hidden';
+    generateBitQR();
+}
+
+function closeBitModal() {
+    const modal = document.getElementById('bitModal');
+    if (!modal) return;
+    modal.classList.remove('open');
+    document.body.style.overflow = '';
+}
+
+function copyBitPhone() {
+    navigator.clipboard.writeText('0526953500').then(() => {
+        const btn = document.querySelector('.btn-copy-phone');
+        if (btn) {
+            btn.textContent = '✓ המספר הועתק!';
+            btn.style.borderColor = 'var(--success)';
+            btn.style.color = 'var(--success)';
+            setTimeout(() => {
+                btn.textContent = '📋 העתק מספר טלפון';
+                btn.style.borderColor = '';
+                btn.style.color = '';
+            }, 2500);
+        }
+    });
+}
+
+function generateBitQR() {
+    const canvas = document.getElementById('bitQrCanvas');
+    if (!canvas || canvas.dataset.drawn) return;
+    canvas.dataset.drawn = '1';
+    canvas.width = 180;
+    canvas.height = 180;
+    const ctx = canvas.getContext('2d');
+    const img = new Image();
+    img.crossOrigin = 'anonymous';
+    img.onload = function() {
+        ctx.drawImage(img, 0, 0, 180, 180);
+    };
+    img.onerror = function() {
+        // Fallback: show phone number in canvas
+        ctx.fillStyle = '#FFFFFF';
+        ctx.fillRect(0, 0, 180, 180);
+        ctx.fillStyle = '#333';
+        ctx.font = 'bold 18px Heebo, sans-serif';
+        ctx.textAlign = 'center';
+        ctx.fillText('052-695-3500', 90, 85);
+        ctx.font = '14px Heebo, sans-serif';
+        ctx.fillText('₪197', 90, 110);
+    };
+    img.src = 'https://api.qrserver.com/v1/create-qr-code/?size=180x180&data=' + encodeURIComponent('tel:0526953500') + '&margin=1';
+}
+
 // ===== Referral System =====
 function shareReferral() {
     const url = window.location.href.split('?')[0];
@@ -844,10 +902,15 @@ document.addEventListener('DOMContentLoaded', () => {
         }, 300);
     }
 
-    // Smooth scroll for anchor links (skip external payment links)
+    // Close Bit modal with ESC
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape') closeBitModal();
+    });
+
+    // Smooth scroll for anchor links
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         const href = anchor.getAttribute('href');
-        if (href === '#BIT_LINK' || href === '#PAYBOX_LINK') return;
+        if (href.length <= 1) return;
         anchor.addEventListener('click', function(e) {
             e.preventDefault();
             const target = document.querySelector(this.getAttribute('href'));

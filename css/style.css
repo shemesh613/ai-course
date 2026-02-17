@@ -629,6 +629,13 @@ a:hover {
     opacity: 0.6;
 }
 
+.video-lock-note {
+    font-size: 0.8rem;
+    color: var(--text-muted);
+    opacity: 0.7;
+    margin-top: 4px;
+}
+
 .video-container video {
     width: 100%;
     aspect-ratio: 16/9;
@@ -2219,6 +2226,211 @@ body.light-mode .video-container {
         width: 280px;
         right: -30px;
     }
+}
+
+/* ===== Bit Payment Modal ===== */
+.bit-modal-overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.7);
+    backdrop-filter: blur(8px);
+    z-index: 10000;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+}
+
+.bit-modal-overlay.open {
+    display: flex;
+    animation: fadeIn 0.3s ease;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+.bit-modal {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 40px;
+    max-width: 420px;
+    width: 100%;
+    text-align: center;
+    position: relative;
+    box-shadow: 0 24px 64px rgba(0, 0, 0, 0.5);
+    animation: slideUp 0.3s ease;
+}
+
+.bit-modal-close {
+    position: absolute;
+    top: 12px;
+    left: 12px;
+    background: none;
+    border: none;
+    color: var(--text-muted);
+    font-size: 1.8rem;
+    cursor: pointer;
+    width: 36px;
+    height: 36px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    transition: var(--transition);
+}
+
+.bit-modal-close:hover {
+    background: var(--bg-card-hover);
+    color: var(--text-bright);
+}
+
+.bit-logo-big {
+    font-size: 3rem;
+    display: block;
+    margin-bottom: 8px;
+}
+
+.bit-modal-header h3 {
+    font-size: 1.4rem;
+    font-weight: 700;
+    color: var(--text-bright);
+    margin-bottom: 8px;
+}
+
+.bit-amount {
+    font-size: 3rem;
+    font-weight: 900;
+    color: var(--accent);
+    margin-bottom: 4px;
+}
+
+.bit-desc {
+    font-size: 0.85rem;
+    color: var(--text-muted);
+    margin-bottom: 24px;
+}
+
+.bit-instruction {
+    font-size: 0.95rem;
+    color: var(--text);
+    margin-bottom: 16px;
+    font-weight: 500;
+}
+
+.bit-qr-container {
+    display: inline-flex;
+    background: white;
+    padding: 16px;
+    border-radius: var(--radius-sm);
+    margin-bottom: 16px;
+}
+
+.bit-qr-container canvas {
+    display: block;
+}
+
+.bit-phone-display {
+    font-size: 1.1rem;
+    color: var(--text);
+    margin-bottom: 4px;
+}
+
+.bit-phone-name {
+    font-size: 0.85rem;
+    color: var(--text-muted);
+    margin-bottom: 16px;
+}
+
+.bit-steps-mini {
+    text-align: right;
+    margin: 0 auto 20px;
+    max-width: 280px;
+}
+
+.bit-step-mini {
+    padding: 8px 0;
+    font-size: 0.9rem;
+    color: var(--text);
+    border-bottom: 1px solid var(--border);
+}
+
+.bit-step-mini:last-child {
+    border-bottom: none;
+}
+
+.btn-bit-open {
+    display: block;
+    background: linear-gradient(135deg, #3CC4B1, #2BA89A);
+    color: white;
+    padding: 16px 32px;
+    border-radius: 50px;
+    font-size: 1.1rem;
+    font-weight: 700;
+    margin-bottom: 12px;
+    transition: var(--transition);
+}
+
+.btn-bit-open:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 24px rgba(60, 196, 177, 0.4);
+    color: white;
+}
+
+.btn-copy-phone {
+    background: none;
+    border: 1px solid var(--border);
+    color: var(--text-muted);
+    padding: 8px 20px;
+    border-radius: 50px;
+    font-size: 0.85rem;
+    cursor: pointer;
+    transition: var(--transition);
+    font-family: 'Heebo', sans-serif;
+    margin-bottom: 16px;
+}
+
+.btn-copy-phone:hover {
+    border-color: var(--accent);
+    color: var(--accent);
+}
+
+.bit-note {
+    font-size: 0.8rem;
+    color: var(--text-muted);
+    margin-bottom: 12px;
+}
+
+.btn-whatsapp-confirm {
+    display: inline-block;
+    background: #25D366;
+    color: white;
+    padding: 10px 24px;
+    border-radius: 50px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    transition: var(--transition);
+}
+
+.btn-whatsapp-confirm:hover {
+    background: #20bd5a;
+    color: white;
+    transform: translateY(-2px);
+}
+
+/* Desktop/Mobile detection */
+.bit-desktop-only { display: block; }
+.bit-mobile-only { display: none; }
+
+@media (max-width: 768px) {
+    .bit-desktop-only { display: none; }
+    .bit-mobile-only { display: block; }
+    .bit-modal { padding: 30px 24px; }
 }
 
 /* ===== Print ===== */

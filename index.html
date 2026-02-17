@@ -272,7 +272,8 @@
                     <div class="video-container" id="video-3">
                         <div class="video-placeholder">
                             <span class="play-icon">🎬</span>
-                            <p>תוכן בהכנה - בקרוב!</p>
+                            <p>הסרטונים זמינים לרוכשים</p>
+                            <span class="video-lock-note">🔒 רכשו את הקורס לצפייה</span>
                         </div>
                     </div>
                     <div class="module-resources">
@@ -469,7 +470,8 @@
                     <div class="video-container" id="video-7">
                         <div class="video-placeholder">
                             <span class="play-icon">🎯</span>
-                            <p>תוכן בהכנה - בקרוב!</p>
+                            <p>הסרטונים זמינים לרוכשים</p>
+                            <span class="video-lock-note">🔒 רכשו את הקורס לצפייה</span>
                         </div>
                     </div>
                     <div class="module-resources">
@@ -520,7 +522,8 @@
                         <div class="video-container" id="video-8">
                             <div class="video-placeholder">
                                 <span class="play-icon">💻</span>
-                                <p>הסרטונים יעלו בקרוב</p>
+                                <p>הסרטונים זמינים לרוכשים</p>
+                                <span class="video-lock-note">🔒 רכשו את הקורס לצפייה</span>
                             </div>
                         </div>
                     </div>
@@ -562,7 +565,8 @@
                         <div class="video-container" id="video-9">
                             <div class="video-placeholder">
                                 <span class="play-icon">💻</span>
-                                <p>הסרטונים יעלו בקרוב</p>
+                                <p>הסרטונים זמינים לרוכשים</p>
+                                <span class="video-lock-note">🔒 רכשו את הקורס לצפייה</span>
                             </div>
                         </div>
                     </div>
@@ -604,7 +608,8 @@
                         <div class="video-container" id="video-10">
                             <div class="video-placeholder">
                                 <span class="play-icon">💻</span>
-                                <p>הסרטונים יעלו בקרוב</p>
+                                <p>הסרטונים זמינים לרוכשים</p>
+                                <span class="video-lock-note">🔒 רכשו את הקורס לצפייה</span>
                             </div>
                         </div>
                     </div>
@@ -646,7 +651,8 @@
                         <div class="video-container" id="video-11">
                             <div class="video-placeholder">
                                 <span class="play-icon">💻</span>
-                                <p>הסרטונים יעלו בקרוב</p>
+                                <p>הסרטונים זמינים לרוכשים</p>
+                                <span class="video-lock-note">🔒 רכשו את הקורס לצפייה</span>
                             </div>
                         </div>
                     </div>
@@ -1262,16 +1268,52 @@
                     <li>עדכוני תוכן שוטפים</li>
                 </ul>
                 <div class="payment-buttons-group">
-                    <a href="#BIT_LINK" class="btn-payment btn-bit" target="_blank" rel="noopener noreferrer">
+                    <button class="btn-payment btn-bit" onclick="showBitPayment()">
                         <span class="payment-logo">💳</span>
                         <span>תשלום דרך Bit</span>
-                    </a>
-                    <a href="#PAYBOX_LINK" class="btn-payment btn-paybox" target="_blank" rel="noopener noreferrer">
-                        <span class="payment-logo">📦</span>
-                        <span>תשלום דרך PayBox</span>
-                    </a>
+                    </button>
                 </div>
                 <p class="pricing-note">תשלום מאובטח ישירות דרך האפליקציה</p>
+
+                <!-- Bit Payment Modal -->
+                <div class="bit-modal-overlay" id="bitModal" onclick="if(event.target===this)closeBitModal()">
+                    <div class="bit-modal">
+                        <button class="bit-modal-close" onclick="closeBitModal()">&times;</button>
+                        <div class="bit-modal-header">
+                            <span class="bit-logo-big">💳</span>
+                            <h3>תשלום ב-Bit</h3>
+                            <div class="bit-amount">₪197</div>
+                            <p class="bit-desc">תשלום חד-פעמי | גישה מלאה לכל החיים</p>
+                        </div>
+
+                        <!-- Desktop: QR Code -->
+                        <div class="bit-desktop-only">
+                            <p class="bit-instruction">סרקו את הקוד עם אפליקציית Bit</p>
+                            <div class="bit-qr-container">
+                                <canvas id="bitQrCanvas"></canvas>
+                            </div>
+                            <p class="bit-phone-display">לטלפון: <strong dir="ltr">052-695-3500</strong></p>
+                            <p class="bit-phone-name">שמשון ג'ייקוב</p>
+                        </div>
+
+                        <!-- Mobile: Direct Button -->
+                        <div class="bit-mobile-only">
+                            <p class="bit-instruction">לחצו לפתיחת Bit והעבירו תשלום</p>
+                            <div class="bit-steps-mini">
+                                <div class="bit-step-mini">1️⃣ לחצו על הכפתור למטה</div>
+                                <div class="bit-step-mini">2️⃣ חפשו: <strong dir="ltr">052-695-3500</strong></div>
+                                <div class="bit-step-mini">3️⃣ העבירו <strong>₪197</strong></div>
+                            </div>
+                            <a href="https://bitpay.co.il" class="btn-bit-open" onclick="copyBitPhone()">
+                                💳 פתח את Bit ושלם
+                            </a>
+                            <button class="btn-copy-phone" onclick="copyBitPhone()">📋 העתק מספר טלפון</button>
+                        </div>
+
+                        <p class="bit-note">אחרי התשלום שלחו אישור בוואטסאפ ותקבלו גישה מיידית</p>
+                        <a href="https://wa.me/972526953500?text=%D7%A9%D7%99%D7%9C%D7%9E%D7%AA%D7%99%20%D7%91-Bit%20%D7%A2%D7%9C%20%D7%94%D7%A7%D7%95%D7%A8%D7%A1" class="btn-whatsapp-confirm">💬 שלחתי! תנו לי גישה</a>
+                    </div>
+                </div>
             </div>
 
             <div class="referral-card">
