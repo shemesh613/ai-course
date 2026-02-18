@@ -776,7 +776,7 @@ function checkReferral() {
 // Video source mapping for modules with multiple videos
 const videoSources = {
     2: [
-        'course/פרק 2 - השוואה בין כלי טקסט ביצירת תמונות',
+        'course/פרק 2 - השוואה בין כלי טקסט ביצירת תמונות.mp4',
         'course/פרק 3- המודל המטורף של גוגל ננו בננה וסודות נוספים..!.mp4'
     ],
     4: [
